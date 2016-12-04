@@ -1,0 +1,14 @@
+<HTML><BODY>
+<div>
+<a href="/read">Read</a> | <a href="/new">Create</a> | <a href="/search">Search</a>
+</div>
+
+<H1>Showing <%= restaurantList.length %> Restaurants</H1>
+<H3>User ID: <%= userid %></H3>
+<H3>Criteria: <%= criteria %></H3>
+<ol>
+  <% restaurantList.forEach(function(restaurant) { %>
+  <li><a href=/showdetails?_id=<%= restaurant._id %>><%= restaurant.name %></a></li>
+  <% });                        %>
+</ol>
+</BODY></HTML>

@@ -1,0 +1,17 @@
+<HTML>
+<BODY>
+<head>
+  <title>Rate</title>
+</head>
+<h1>Rate</h1>
+<form action="/rate" method="POST">
+  <input type='hidden' name='_id' value='<%= restaurant._id %>' required>
+  <input type='hidden' name='user' value='<%= user %>' required>
+  _id: <%= restaurant._id %><br><br>
+  Name: <%= restaurant.name %><br><br><hr><br>
+  Score(1-10):
+  <input type="number" name="score" min="1" max="10" step="1" value="5">
+  <input type="submit" value="Rate">
+</form>
+</BODY>
+</HTML>

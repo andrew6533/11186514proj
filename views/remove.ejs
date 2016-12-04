@@ -1,0 +1,15 @@
+<HTML>
+<BODY>
+<head>
+  <title>Remove Restaurant</title>
+</head>
+<h1>Remove Restaurant</h1>
+<form action='/remove' method='post'>
+  <input type='hidden' name='_id' value='<%= restaurant._id %>' required>
+  _id: <%= restaurant._id %><br><br>
+  Name: <%= restaurant.name %><br><br><hr><br>
+  Are you sure to remove this document?<br><br>
+  <input type='submit' value='Remove Document' />
+</form>
+</BODY>
+</HTML>

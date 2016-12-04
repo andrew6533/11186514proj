@@ -1,0 +1,22 @@
+<HTML>
+<BODY>
+<head>
+  <title>Update Document</title>
+</head>
+<h1>Update Restaurant</h1>
+<form action='/update' method='post' encType='multipart/form-data'>
+  <input type='hidden' name='_id' value='<%= restaurant._id %>' required>
+  Name: <input type='text' name='name' value='<%= restaurant.name %>' required><br><br>
+  Cuisine: <input type='text' name='cuisine' value='<%= restaurant.cuisine %>'><br><br>
+  Street: <input type='text' name='street' value='<%= restaurant.address.street %>'><br><br>
+  Borough: <input type='text' name='borough' value='<%= restaurant.borough %>'><br><br>
+  Building: <input type='text' name='building' value='<%= restaurant.address.building %>'><br><br>
+  Zipcode: <input type='text' name='zipcode' value='<%= restaurant.address.zipcode %>'><br><br>
+  GPS Coord.(Latitude): <input type='number' name='latitude' step='any' value='<%= restaurant.address.coord[0] %>'><br><br>
+  GPS Coord.(Longitude): <input type='number' name='longitude' step='any' value='<%= restaurant.address.coord[1] %>'><br><br>
+  Photo: <input type="file" name="uploadFile" />
+  <input type="checkbox" name="isPhotoNull">Ignore<br><br>
+  <input type='submit' value='Update' />
+</form>
+</BODY>
+</HTML>

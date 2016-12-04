@@ -1,0 +1,60 @@
+<HTML>
+<BODY>
+<head>
+  <title><%= restaurant.name %></title>
+  
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true&key=AIzaSyAMekOr9omPqImF7G-Sk-fHIj7kJYHIR6E"></script>
+	<script type="text/javascript">
+            var loadMap = function() 
+            {
+				var myLatLng = {lat: <%=restaurant.address.coord[0]%>, lng: <%=restaurant.address.coord[1]%>};
+                var map = new google.maps.Map(document.getElementById("map"),{
+				      zoom: 18,
+				      center: myLatLng
+				}); 
+				var map = new google.maps.Marker({
+					position: myLatLng,
+					map: map,
+					title: '<%=restaurant.name%>'
+				});
+            };
+            window.onload= loadMap;
+    </script>
+</head>
+<H2><%= restaurant.name %></H2>
+<h4>Created by: <%= restaurant.creator %> </h4>
+
+<div>
+<a href="/read">Read</a> | <a href="/update?_id=<%=restaurant._id%>">Update</a> | <a href="/remove?_id=<%=restaurant._id%>">Remove</a> | 
+<a href="/rate?_id=<%=restaurant._id%>">Rate</a>
+</div>
+
+<% if (restaurant.data != null && restaurant.data!='') { %>
+<p>
+  <img src="data:<%= restaurant.mimetype %>;base64,<%= restaurant.data %>">
+</p>
+<% } %>
+<p>Cuisine: <%= restaurant.cuisine %></p>
+<p>Street: <%= restaurant.address.street %></p>
+<p>Borough: <%= restaurant.borough %></p>
+<p>Building: <%= restaurant.address.building %></p>
+<p>Zipcode: <%= restaurant.address.zipcode %></p>
+<p>Ratings:
+<ol>
+  <% if(restaurant.rating!=null){ %>
+  <% restaurant.rating.forEach(function(restaurantRating) { %>
+  <li>Score: <%=restaurantRating.score%> (<%=restaurantRating.user%>)</li>
+  <% });                        %>
+  <% } %>
+</ol>
+</p>
+<p>Coord.: [<%= restaurant.address.coord[0] %>,<%= restaurant.address.coord[1] %>]</p>
+<% if(restaurant.address.coord[0]!=null&&restaurant.address.coord[1]!=null){ %>
+	Google Map:
+	<div id="map" style="width:500px;height:500px;">
+<% } %>
+
+
+
+</BODY>
+</HTML>
